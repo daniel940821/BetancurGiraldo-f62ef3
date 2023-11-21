@@ -497,10 +497,8 @@ async function setTags(){
             option.text=data[i].name
         }
         selectCategory.appendChild(option)
-        console.log(count);
     }
     if(count==0){
-        console.log(count);
         const option1 = document.createElement("option")
         option1.value="Non asigned TAG"
         option1.text="Non asigned TAG"
