@@ -499,10 +499,10 @@ async function setTags(){
         selectCategory.appendChild(option)
     }
     if (count==0){
-        const option = document.createElement("option")
-        option.value="Non asigned TAG"
-        option.text="Non asigned TAG"
-        selectCategory.appendChild(option)
+        const option1 = document.createElement("option")
+        option1.value="Non asigned TAG"
+        option1.text="Non asigned TAG"
+        selectCategory.appendChild(option1)
     }
 }
 // Listener segun el option seleccionado
