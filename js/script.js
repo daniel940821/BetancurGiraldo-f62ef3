@@ -133,7 +133,7 @@ save.addEventListener("click",async function(){
         noteObject.title=titleContent
         noteObject.contentNote=descriptionContent
         noteObject.idUser=1
-        const endPointGetTag="http://localhost:8080/tag";
+        const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag";
         let tagSearch;
         if(tag.value!=""){
             const dataTag= await searchAll(endPointGetTag)
@@ -157,7 +157,7 @@ save.addEventListener("click",async function(){
             noteObject.idTag=tagSearch.idTag
         }
 
-        const endPointCreateNote="http://localhost:8080/note";
+        const endPointCreateNote="http://betancurgiraldo-f62ef3back.railway.internal/note";
         postNote(noteObject,endPointCreateNote)
     }
 })
@@ -181,13 +181,13 @@ async function postNote(object,link){
 
 // ALL UNARCHIVED NOTES
 async function setNotes(){
-    const endPointGetNotes="http://localhost:8080/note";
+    const endPointGetNotes="http://betancurgiraldo-f62ef3back.railway.internal/note";
     const notes = await searchAll(endPointGetNotes)
     notes.forEach(async note =>  {
         let textTag=""
         if(note.archived==false){
             if(note.idTag!=null){
-                const endPointGetTag="http://localhost:8080/tag/"+note.idTag;
+                const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag/"+note.idTag;
                 const data = await searchAll(endPointGetTag);
                 textTag=data.name;
             }
@@ -235,7 +235,7 @@ async function handleNoteClick(note) {
     descriptionSelected.value=note.contentNote
     count1.textContent=255-descriptionSelected.value.length
     if(note.idTag!=null){
-        const endPointGetTag="http://localhost:8080/tag/"+note.idTag;
+        const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag/"+note.idTag;
         const data = await searchAll(endPointGetTag);
         tagSelected.value=data.name
     }else{
@@ -258,13 +258,13 @@ descriptionSelected.addEventListener("input", function () {
 
 // Metodo para eliminar una vez se le da al contenedor delete
 deleteNote.addEventListener("click",async ()=>{
-    const endPointDeleteNote="http://localhost:8080/note/"+selectedNote.id;
+    const endPointDeleteNote="http://betancurgiraldo-f62ef3back.railway.internal/note/"+selectedNote.id;
     await deleteId(endPointDeleteNote);
     simulateClick(allNotes);
 })
 // Metodo para archivar una vez se le da al contenedor delete
 archiveNote.addEventListener("click",async ()=>{
-    const endPointUpdateNote="http://localhost:8080/note";
+    const endPointUpdateNote="http://betancurgiraldo-f62ef3back.railway.internal/note";
     let data = await verifyUpdate();
     data.archived=true
     await updateId(endPointUpdateNote,data);
@@ -272,7 +272,7 @@ archiveNote.addEventListener("click",async ()=>{
 })
 
 updateButton.addEventListener("click",async ()=>{
-    const endPointUpdateNote="http://localhost:8080/note";
+    const endPointUpdateNote="http://betancurgiraldo-f62ef3back.railway.internal/note";
     let data = await verifyUpdate();
     await updateId(endPointUpdateNote,data);
     simulateClick(allNotes);
@@ -280,12 +280,12 @@ updateButton.addEventListener("click",async ()=>{
 
 // FUNCION QUE VERIFICA DATOS ANTES DE HACER UN UPDATE
 async function verifyUpdate(){
-    const endPointGetNote="http://localhost:8080/note/"+selectedNote.id;
+    const endPointGetNote="http://betancurgiraldo-f62ef3back.railway.internal/note/"+selectedNote.id;
     let data = await searchAll(endPointGetNote)
     data.title=titleSelected.value
     data.contentNote= descriptionSelected.value
     if(data.idTag!=undefined){
-        const endPointGetTag="http://localhost:8080/tag/"+data.idTag;
+        const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag/"+data.idTag;
         const dataTag = await searchAll(endPointGetTag)
         if(dataTag.name==tagSelected.value){
         }else {
@@ -301,7 +301,7 @@ async function verifyUpdate(){
 
 async function verifyTag(tag){
     let find =false
-    const endPointGetTag="http://localhost:8080/tag";
+    const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag";
     const dataTag = await searchAll(endPointGetTag);
     for(let i=0; i<dataTag.length;i++){
         if(dataTag[i].name==tag.toLowerCase()){
@@ -312,7 +312,7 @@ async function verifyTag(tag){
     if(find){
         return find;
     }else{
-        const endPointPostTag="http://localhost:8080/tag";
+        const endPointPostTag="http://betancurgiraldo-f62ef3back.railway.internal/tag";
         tagObject.name= tag.toLowerCase();
         const object= await postTag(tagObject,endPointPostTag)
         return object.idTag;
@@ -321,13 +321,13 @@ async function verifyTag(tag){
 
 // ALL ARCHIVED NOTES
 async function setNotesA(){
-    const endPointGetNotes="http://localhost:8080/note";
+    const endPointGetNotes="http://betancurgiraldo-f62ef3back.railway.internal/note";
     const notes = await searchAll(endPointGetNotes)
     notes.forEach(async note =>  {
         let textTag=""
         if(note.archived==true){
             if(note.idTag!=null){
-                const endPointGetTag="http://localhost:8080/tag/"+note.idTag;
+                const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag/"+note.idTag;
                 const data = await searchAll(endPointGetTag);
                 textTag=data.name;
             }
@@ -348,7 +348,7 @@ async function handleNoteClickA(note) {
     descriptionSelectedA.value=note.contentNote
     count1A.textContent=255-descriptionSelectedA.value.length
     if(note.idTag!=null){
-        const endPointGetTag="http://localhost:8080/tag/"+note.idTag;
+        const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag/"+note.idTag;
         const data = await searchAll(endPointGetTag);
         tagSelectedA.value=data.name
     }else{
@@ -371,13 +371,13 @@ descriptionSelectedA.addEventListener("input", function () {
 
 // Metodo para eliminar una vez se le da al contenedor delete
 deleteNoteA.addEventListener("click",async ()=>{
-    const endPointDeleteNote="http://localhost:8080/note/"+selectedNoteA.id;
+    const endPointDeleteNote="http://betancurgiraldo-f62ef3back.railway.internal/note/"+selectedNoteA.id;
     await deleteId(endPointDeleteNote);
     simulateClick(archivedNotes);
 })
 // Metodo para desarchivar una vez se le da al contenedor delete
 archiveNoteA.addEventListener("click",async ()=>{
-    const endPointUpdateNote="http://localhost:8080/note";
+    const endPointUpdateNote="http://betancurgiraldo-f62ef3back.railway.internal/note";
     let data = await verifyUpdateA();
     data.archived=false
     await updateId(endPointUpdateNote,data);
@@ -385,7 +385,7 @@ archiveNoteA.addEventListener("click",async ()=>{
 })
 
 updateButtonA.addEventListener("click",async ()=>{
-    const endPointUpdateNote="http://localhost:8080/note";
+    const endPointUpdateNote="http://betancurgiraldo-f62ef3back.railway.internal/note";
     let data = await verifyUpdateA();
     await updateId(endPointUpdateNote,data);
     simulateClick(archivedNotes);
@@ -394,12 +394,12 @@ updateButtonA.addEventListener("click",async ()=>{
 
 // FUNCION QUE VERIFICA DATOS ANTES DE HACER UN UPDATE
 async function verifyUpdateA(){
-    const endPointGetNote="http://localhost:8080/note/"+selectedNoteA.id;
+    const endPointGetNote="http://betancurgiraldo-f62ef3back.railway.internal/note/"+selectedNoteA.id;
     let data = await searchAll(endPointGetNote)
     data.title=titleSelectedA.value
     data.contentNote= descriptionSelectedA.value
     if(data.idTag!=undefined){
-        const endPointGetTag="http://localhost:8080/tag/"+data.idTag;
+        const endPointGetTag="http://betancurgiraldo-f62ef3back.railway.internal/tag/"+data.idTag;
         const dataTag = await searchAll(endPointGetTag)
         if(dataTag.name==tagSelectedA.value){
         }else {
@@ -478,7 +478,7 @@ function welcomeTags(){
 </p>`
 }
 async function setTags(){
-    const endPointGetTags="http://localhost:8080/tag";
+    const endPointGetTags="http://betancurgiraldo-f62ef3back.railway.internal/tag";
     const data = await searchAll(endPointGetTags)
     selectCategory.innerHTML=""
     const option = document.createElement("option")
@@ -507,7 +507,7 @@ selectCategory.addEventListener("change",async ()=>{
         welcomeTags()
     }else{
         packCategory.innerHTML=""
-        endPointGetNote="http://localhost:8080/note"
+        endPointGetNote="http://betancurgiraldo-f62ef3back.railway.internal/note"
         const data = await searchAll(endPointGetNote)
         let count =0;
         for (let i =0 ; i< data.length;i++) {
