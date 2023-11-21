@@ -5,7 +5,7 @@ loginForm.addEventListener('submit', async (e) => {
     const email = document.querySelector('#email').value
     const password = document.querySelector('#password').value
     // EndPoint to search an user with email
-    const searchForEmail="http://betancurgiraldo-f62ef3back.railway.internal/user/validation/"+email;
+    const searchForEmail="http://betancurgiraldo-f62ef3back-production.up.railway.app/user/validation/"+email;
     const data = await searchUser(searchForEmail);
     if(data!=null){
         if(data.email==email && data.password==password){
