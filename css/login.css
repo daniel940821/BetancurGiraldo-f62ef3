@@ -1,0 +1,143 @@
+@import url('https://fonts.cdnfonts.com/css/garant-pro');
+@import url('https://fonts.cdnfonts.com/css/tt-rationalist-trl');
+
+:root{
+    --transition: all 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --black: #000;
+    --grey: #ECECEC;
+    --white: #fff;
+    --gold1: #FFE680;
+    --gold2: #D7AE00;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+#swal2-html-container {
+    margin-left: 0 !important; /* Establece el margen izquierdo a 0 */
+}
+
+body{
+    font-family: 'Garant pro';
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(135deg,rgb(0, 0, 0) 60%,var(--gold2) 150%);
+}
+input{
+    font-family: 'Garant pro';
+}
+/* ALERTS */
+.mi-alerta {
+    background-color: #f5f5f5;
+    border: 2px solid #ccc;
+}
+
+.mi-titulo {
+    color: #333;
+    font-size: 20px;
+}
+
+.mi-contenido {
+    color: #666;
+}
+
+.mi-boton {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* ERROR ALERT*/
+.mi-alerta-error {
+    background-color: #ffcccc;
+    border: 2px solid #ff0000;
+}
+
+.mi-titulo-error {
+    color: #ff0000;
+    font-size: 20px;
+}
+
+.mi-contenido-error {
+    color: #ff3333;
+}
+
+.mi-boton-error {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+/* MAIN */
+section{
+    display:flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    align-items:center;
+    margin-top: 100px;
+    justify-content: top;
+    flex-direction: column;
+}
+
+.container_Login{
+    background-image: url(../Img/FondoLoginDifuso.png);
+    background-size: cover;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 2.5%;
+    padding-bottom: 15px;
+    width: 450px;
+
+}
+
+input{
+    height: 50px;
+    width: 70%;
+    border-radius: 9px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    outline-color: #ffffff;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+
+#submit{
+    background-image: linear-gradient(90deg,white 40%,var(--black) 150%);
+    border-radius: 20px;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Garant Pro', sans-serif; 
+}
+
+section h2{
+    text-align:center;
+    width: 100%;
+    font-size: 2.5em;
+    color: var(--white);
+    font-weight: normal;
+    font-family: 'TT Rationalist Trl';
+    margin-top: 10px;
+}
+
+section form input[type='submit']:active{
+    transform: scale(0.97);
+}
+
+@media  (min-width: 320px) and (max-width: 600px){
+
+    .container_Login{
+        width: 320px;
+    }
+
+}

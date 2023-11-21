@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Reference to SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Reference to SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="nav_Main">
+        <div class="navigation">
+            <div class="container_CreateNote">
+                <div class="icon">
+                    <span class="material-symbols-outlined">add_circle</span>
+                </div>
+                <p class="arrow">></p>
+                <p class="textAbout">Create Note</p>
+            </div>
+            <div class="container_Note">
+                <div class="icon">
+                    <span class="material-symbols-outlined">emoji_objects</span>
+                </div>
+                <p class="arrow">></p>
+                <p class="textAbout">Notes</p>
+            </div>
+            <div class="container_Archive">
+                <div class="icon">
+                    <span class="material-symbols-outlined">archive</span>
+                </div>
+                <p class="arrow">></p>
+                <p class="textAbout">Archived Notes</p>
+            </div>
+            <div class="container_Tags">
+                <div class="icon">
+                    <span class="material-symbols-outlined">sell</span>
+                </div>
+                <p class="arrow">></p>
+                <p class="textAbout">Category</p>
+            </div>
+        </div>
+
+        <!-- WELCOME INTERFACE  -->
+        <div class="container_Global">
+            <p>Welcome to your note manager</p>
+        </div>
+
+        <!-- CREATE NOTE  -->
+        <div class="container_Create">
+            <div class="conteiner_Info">
+                <p>Title note </p>
+                <div class="container_Title">
+                    <input placeholder="Title " id="title" required>
+                </div>
+                <p>Content</p>
+                <div class="container_Content">
+                    <input placeholder="Description"  id="description" required>
+                </div>
+                <p class="available">Available characters <span class="count">255</span></p>
+                <div class="category_Tag">
+                    <div class="category">
+                        <p>Category</p>
+                        <div class="container_Title">
+                            <input placeholder="Example: Tasks"  id="tag" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="container_Buttoms">
+                    <button class="cancel" onclick="clearFields()">Clear</button>
+                    <button class="save" id="save">Save</button>
+                </div>
+            </div>
+        </div>
+        <!-- ALL NOTES -->
+        <div class="container_Notes">
+            <div class="container_SelectedNote">
+                <p class="selectNote">
+                    <span class="material-symbols-outlined">
+                        description
+                    </span>
+                    Welcome, select a Note
+                </p>
+                <div class="selectedNote">
+                    <input type="text" class="contentTitleSelected">
+                    <hr>
+                    <textarea class="contentDescriptionSelected"> </textarea>
+                    <p class="available">Available characters <span class="count1"></span></p>
+                    <input type="text" class="contentTagSelected" placeholder="Tag here">
+                    <div class="footerNoteSelected">
+                        <div class="elementFooter delete">
+                            <span class="material-symbols-outlined">delete_forever</span>
+                            <p class="textFooter">Delete</p>
+                        </div>
+                        <div class="elementFooter archive">
+                            <span class="material-symbols-outlined">archive</span>
+                            <p class="textFooter">Archive</p>
+                        </div>
+                        <div class="elementFooter update"><button class="updateButton">Update</button></div>
+                    </div>
+                </div>
+            </div>   
+            <hr> 
+            <div class="container_AllNote">
+            </div>
+        </div>
+        <!-- ARCHIVED NOTES -->
+        <div class="container_ArchivedNotes">
+            <div class="container_SelectedNoteA">
+                <p class="selectNoteA">
+                    <span class="material-symbols-outlined">
+                        description
+                    </span>
+                    Welcome, select an archived Note
+                </p>
+                <div class="selectedNoteA">
+                    <input type="text" class="contentTitleSelectedA">
+                    <hr>
+                    <textarea class="contentDescriptionSelectedA"> </textarea>
+                    <p class="available">Available characters <span class="count1A"></span></p>
+                    <input type="text" class="contentTagSelectedA" placeholder="Tag here">
+                    <div class="footerNoteSelectedA">
+                        <div class="elementFooterA deleteA">
+                            <span class="material-symbols-outlined">delete_forever</span>
+                            <p class="textFooterA">Delete</p>
+                        </div>
+                        <div class="elementFooterA archiveA">
+                            <span class="material-symbols-outlined">unarchive</span>
+                            <p class="textFooterA">Unarchive</p>
+                        </div>
+                        <div class="elementFooterA updateA"><button class="updateButtonA">Update</button></div>
+                    </div>
+                </div>
+            </div>   
+            <hr> 
+            <div class="container_AllNoteA">
+            </div>
+        </div>
+        <!-- TAGS -->
+        <div class="container_Category">
+            <div class="filter_Category">
+                <p>Select the TAG</p>
+                <form action="#">
+                    <select name="categories" id="categories">
+                        <option value="none">None</option>
+                    </select>
+                </form>
+            </div>
+            <hr>
+            <div class="container_NoteCategory">
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
