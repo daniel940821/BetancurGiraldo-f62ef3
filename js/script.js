@@ -485,15 +485,23 @@ async function setTags(){
     option.value="None"
     option.text="None"
     selectCategory.appendChild(option)
+    let count=0;
     for (let i =0 ; i< data.length;i++) {
         const option = document.createElement("option")
         if(data[i].name==""){
+            count++
             option.value=data[i].idTag
             option.text="Non asigned TAG"
         }else{
             option.value=data[i].idTag
             option.text=data[i].name
         }
+        selectCategory.appendChild(option)
+    }
+    if (count==0){
+        const option = document.createElement("option")
+        option.value="Non asigned TAG"
+        option.text="Non asigned TAG"
         selectCategory.appendChild(option)
     }
 }
